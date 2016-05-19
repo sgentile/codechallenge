@@ -7,7 +7,7 @@
 
 
 import makeFinalStore from 'alt-utils/lib/makeFinalStore';
-//import AuthStore from 'stores/AuthStore';
+import EmployeeStore from 'stores/EmployeeStore';
 
 export default function(alt, storage, storeName) {
   const finalStore = makeFinalStore(alt);
@@ -20,8 +20,8 @@ export default function(alt, storage, storeName) {
   }
 
   finalStore.listen(() => {
-    if(!storage.get('debug')) {
-      //storage.set(storeName, alt.takeSnapshot(AuthStore)); //partial, we don't want to store everything
-    }
+    //if(!storage.get('debug')) {
+      storage.set(storeName, alt.takeSnapshot(EmployeeStore)); //partial, we don't want to store everything
+    //}
   });
 }

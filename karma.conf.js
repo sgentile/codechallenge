@@ -65,7 +65,7 @@ module.exports = function(config) {
   config.set({
     browsers: ['Chrome'],
     singleRun: true, //just run once by default
-    frameworks: ['mocha'],
+    frameworks: ['jasmine'],
     files: [
       'tests.webpack.js' //just load this file
     ],

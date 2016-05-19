@@ -4,12 +4,12 @@ class EmployeeActions {
 	constructor(){
 		this.generateActions(
 			'getInitializedEmployee',
-			'setName',
+			'reset',
+			'addEmployee',
 			'addDependent',
 			'removeDependent'
 		);
-	}	
-
+	}
 	//in real life we would call api to fetch this data...
 }
 

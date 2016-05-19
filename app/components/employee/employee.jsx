@@ -1,28 +1,42 @@
 import {Component, PropTypes} from 'react';
-import {Table, PageHeader} from 'react-bootstrap';
+import {PageHeader, Button} from 'react-bootstrap';
+
+import EmployeeActions from 'actions/EmployeeActions';
+
+import AddEmployee from 'components/employee/AddEmployee';
+import BenefitSummary from 'components/employee/BenefitSummary';
+import PayChecks from 'components/employee/PayChecks';
+
+import Dependents from 'components/dependents/Dependents';
+import AddDependents from 'components/dependents/AddDependents';
 
 export default class Employee extends Component {
+    
+    reset(e){
+        e.preventDefault();
+        EmployeeActions.reset();
+    };
+
+
     render(){
-        console.log(this.props);
         return (
             <div>
-                <PageHeader>Benefit Cost Breakdown <small>{this.props.employee.name}</small></PageHeader>
-                <Table striped bordered condensed hover>
-                    <thead>
-                        <tr>
-                           <th>Name</th>
-                           <th>Benefit Costs</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.props.employee.dependents.map(data =>
-                            <tr key={data.id}>
-                                <td>{data.name}</td>
-																<td>{data.benefitCosts}</td>                            
-															</tr>
-                        )}
-                    </tbody>
-                </Table>
+                <PageHeader>Employee Benefit Cost Breakdown <small>{this.props.employee.name} <div className="pull-right"><Button onClick={this.reset.bind(this)}>Reset</Button></div></small></PageHeader>
+
+                {this.props.employee.name.length === 0 ?
+                    <div>
+                        <AddEmployee {...this.props} />
+                    </div>
+                    :
+                    <div>
+                        <BenefitSummary {...this.props} />
+                        <AddDependents />
+                        <Dependents dependents={this.props.employee.dependents} />
+                        <PayChecks {...this.props} />
+                    </div>
+                }
+
+
             </div>
         )
     }
