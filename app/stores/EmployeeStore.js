@@ -50,7 +50,7 @@ class EmployeeStore {
         let newEmployee = {
             name: "",
             monthlyGrossPay: 2000.00,
-            monthlyNetPay: 0,
+            monthlyNetPay: 0,   
             benefitCost: 1000.00,
             monthlyBenefitCost: (1000.00/26),
             discountApplied: false,

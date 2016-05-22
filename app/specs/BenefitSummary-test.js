@@ -13,7 +13,7 @@ describe('BenefitSummary', () => {
 
     it('properly renders the summary given the employee monthlyBenefitCost and monthlyNetPay', () => {
         // Render a checkbox with label in the document
-        const employee = {
+        let employee = {
             monthlyBenefitCost: 500,
             monthlyNetPay: 200
         };
